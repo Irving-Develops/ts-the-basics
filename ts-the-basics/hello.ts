@@ -35,3 +35,30 @@ getFavNumber()
 function printId (id: string | number) {
     // console.log(id.toUpperCase())
 }
+
+type Point = { x: number, y: number }
+
+function coordinates (pt: Point) {
+    return pt.x + pt.y
+}
+
+coordinates({x: 12, y: 23})
+
+// interfaces can be extended whereas types cannot
+
+interface Animal {
+    name: string
+}
+
+interface Bear extends Animal {
+    honey: boolean
+}
+
+
+type Pet = {
+    name: String
+}
+
+type Dog = Pet & {
+    age: number
+}
