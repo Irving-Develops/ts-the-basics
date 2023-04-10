@@ -62,3 +62,6 @@ type Pet = {
 type Dog = Pet & {
     age: number
 }
+
+
+const canvas = <HTMLCanvasElement>document.getElementById("main-canvas");

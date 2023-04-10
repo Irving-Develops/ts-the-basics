@@ -16,6 +16,15 @@ obj.bool = true;
 // }
 //return type goes after parameter
 function getFavNumber() {
-    return "dafh";
+    return 7;
 }
 getFavNumber();
+//doesnt work because toUpperCaseUpperCase doesnt exist for numbers
+function printId(id) {
+    // console.log(id.toUpperCase())
+}
+function coordinates(pt) {
+    return pt.x + pt.y;
+}
+coordinates({ x: 12, y: 23 });
+var canvas = document.getElementById("main-canvas");
