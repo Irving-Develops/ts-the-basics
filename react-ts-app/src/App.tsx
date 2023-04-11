@@ -4,6 +4,9 @@ import { Person } from './components/Person'
 import { PersonList } from './components/PersonList'
 import { Status } from './components/Status'
 import { Heading } from './components/Heading'
+import { Button } from './components/Button'
+import { Input } from './components/Input'
+import { Container } from './components/Container'
 
 
 function App() {
@@ -16,11 +19,16 @@ function App() {
 
   return (
     <div className="App">
-      <Greet name="Irving" messageCount={20} isLoggedIn={true}/>
+      <Greet name="Irving"  messageCount={21} isLoggedIn={true}/>
       <Person name={personName}/>
       <PersonList names={nameList}/>
       <Status status="online"/>
       <Heading> hello</Heading>
+      <Button handleClick={(e, id) =>
+        console.log('clicked', e, id)
+      }/>
+      <Input value='' handleChange={(e) => console.log(e)}/>
+      <Container styles={{border: '1px solid black', padding: '1rem'}}/>
     </div>
   )
 }
