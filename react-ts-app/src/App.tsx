@@ -2,6 +2,8 @@ import './App.css'
 import { Greet } from './components/Greet'
 import { Person } from './components/Person'
 import { PersonList } from './components/PersonList'
+import { Status } from './components/Status'
+import { Heading } from './components/Heading'
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
       <Greet name="Irving" messageCount={20} isLoggedIn={true}/>
       <Person name={personName}/>
       <PersonList names={nameList}/>
+      <Status status="online"/>
+      <Heading> hello</Heading>
     </div>
   )
 }
