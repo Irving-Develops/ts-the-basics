@@ -28,6 +28,14 @@ type Task = {
   createdAt: Date;
 }
 
+// type TodoProps = {
+//   todoList: Task[];
+// }
+
+// type CheckedProps = {
+//   toggleCompleted: (e: React.ChangeEvent<HTMLInputElement>, uuid: string) => void;
+// }
+
 function Todo () {
   const [todo, setTodo] = useState<string>("");
   const [todoList, setTodoList] = useState<Task[]>(() => {
@@ -38,10 +46,12 @@ function Todo () {
     return []
   });
 
+
   useEffect(() => {
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }, [todoList])
 
+  // localStorage.removeItem('todoList')
 
   const addTask = () => {
 
@@ -63,8 +73,23 @@ function Todo () {
     // localStorage.setItem('todoList', JSON.stringify(todoList))
   }
 
+  const toggleCompleted = (uuid: string) => {
+    let updatedList = todoList.filter((task) => {
+      if(task.uuid === uuid) {
+        task.completed = !task.completed
+      }
+
+      return !task.completed
+    })
+    setTodoList(updatedList)
+  }
+
+  console.log(todoList, "list")
+
   return (
-    <div className="flex gap-2">
+
+    <div>
+    <form className="flex gap-2">
       <input
         type="text"
         value={todo}
@@ -73,15 +98,18 @@ function Todo () {
         onChange={(e) => setTodo(e.target.value)}
       />
       <button onClick={addTask} className="btn btn-outline">Add</button>
+    </form>
+  <div className="flex justify-between pt-8 pb-8">
+    <p>Task</p>
+    <p>Completed</p>
+  </div>
 
-      <div>
         {todoList.map((task) => (
-          <div key={task.uuid}>
-            <p>{task.name}</p>
-            <input onClick={() => !task.completed} checked={task.completed} type="checkbox" />
+          <div key={task.uuid} className={`${task.completed ? "hidden" : "block"} flex justify-between pb-2`}>
+              <p>{task.name}</p>
+              <input onClick={() => toggleCompleted(task.uuid)} defaultChecked={false} type="checkbox" className="checkbox checkbox-success"/>
           </div>
         ))}
-      </div>
     </div>
   );
 }
