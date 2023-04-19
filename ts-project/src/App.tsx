@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from "uuid";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import Button from "./components/Button";
 
 function App() {
   
@@ -97,7 +98,7 @@ function Todo () {
         className="input input-bordered input-info w-full max-w-xs"
         onChange={(e) => setTodo(e.target.value)}
       />
-      <button onClick={addTask} className="btn btn-outline">Add</button>
+      <Button children={"Add"} onClick={addTask}/>
     </form>
   <div className="flex justify-between pt-8 pb-8">
     <p>Task</p>
